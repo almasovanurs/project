@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{save}" th:object="${company}">
+
+    <label for="companyName">Enter CompanyName</label>
+    <input type="text" th:field="*{companyName}" id="companyName"/>
+    <br>
+    <label for="locationCountry">Enter LocatedCountry</label>
+    <input type="text" th:field="*{locatedCountry}" id="locationCountry"/>
+    <br>
+    <input type="submit" value="Create">
+</form>
+
+
+</body>
+</html>

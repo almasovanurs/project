@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/students/saveStudent(groupId=${param.groupId})}" th:object="${student}" method="post">
+
+    <input type="hidden" name="id" th:field="*{id}">
+
+    <input type="text" name="firstName" th:field="*{firstName}" placeholder="FirstName">
+    <br><br>
+    <input type="text" name="lastName" th:field="*{lastName}" placeholder="LastName">
+    <br><br>
+    <input type="text" name="email" th:field="*{email}" placeholder="Email">
+    <br><br>
+    <input type="text" name="learningFormat" th:field="*{learningFormat}" placeholder="LearningFormat">
+    <br><br>
+    <input type="submit" value="Add">
+
+</form>
+
+</body>
+</html>

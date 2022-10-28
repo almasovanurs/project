@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>CourseName</th>
+        <th>Duration</th>
+        <th>Teachers</th>
+        <!--        <th></th>-->
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tbody>
+    <tr th:each="courses: ${course}">
+        <td><p th:text="${courses.getId()}"></p></td>
+        <td><p th:text="${courses.getCourseName()}"></p></td>
+        <td><p th:text="${courses.getDuration()}"></p></td>
+        <td>
+            <a th:href="@{/teachers(courseId=${courses.id})}">Teachers</a>
+        </td>
+        <!--        <td>-->
+        <!--            <a th:href="@{/getGroupsSelectedThisCourse(courseId=${courses.id},companyId=${param.companyId})}">-->
+        <!--                <button >Groups</button>-->
+        <!--            </a>-->
+              </td>-->
+        <td>
+            <a  th:href="@{/courses/{id}/update(id=${courses.getId()},companyId=${param.companyId})}">
+                <button>Update</button></a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/courses/{id}/delete(id=${courses.getId()},companyId=${param.companyId})}">
+                <button>Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a th:href="@{/courses/newCourse(companyId=${param.companyId})}">Create new Course</a>
+<hr>
+<a href="/">Main</a>
+
+</body>
+</html>

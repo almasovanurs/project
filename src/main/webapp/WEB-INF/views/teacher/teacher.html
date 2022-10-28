@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>email</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="teacher: ${teachers}">
+    <tr>
+        <td><p th:text="${teacher.getId()}"></p></td>
+        <td><p th:text="${teacher.getFirstName()}"></p></td>
+        <td><p th:text="${teacher.getLastName()}"></p></td>
+        <td><p th:text="${teacher.getEmail()}"></p></td>
+        <td>
+            <a th:href="@{/teachers/{id}/edit(id=${teacher.id},courseId=${param.courseId})}">
+                <input type="submit" value="Update"></a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/teachers/{id}/delete(id=${teacher.id},courseId=${param.courseId})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a th:href="@{/teachers/newTeacher(courseId=${param.courseId})}">Create new Teacher</a>
+<br>
+<a href="/">Main</a>
+</body>
+</html>
